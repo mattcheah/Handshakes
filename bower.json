@@ -1,0 +1,22 @@
+{
+  "name": "handshakes",
+  "authors": [
+    "Matt Cheah <matt.cheah@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/bower_componets",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "^1.0.10"
+  }
+}

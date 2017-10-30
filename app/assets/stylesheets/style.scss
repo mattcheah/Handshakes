@@ -1,0 +1,18 @@
+// Style.scss
+
+$primaryFontColor: #000;
+$pageBackgroundColor: #DDD;
+$wellBackgroundColor: #CCC;
+
+
+body {
+    color: $primaryFontColor;
+    background-color: $pageBackgroundColor;
+    padding: 100px;
+}
+
+.container {
+    padding:40px;
+    border-radius:6px;
+    background-color: $wellBackgroundColor;
+}

@@ -1,0 +1,20 @@
+<h3>
+  <a ng-show="post.link" href="{{ post.link }}">
+      {{post.title}}
+  </a>
+  <span ng-hide="post.link">
+      {{post.title}}
+  </span>
+</h3>
+
+<div ng-repeat="comment in post.comments | orderBy: '-upvotes'">
+  <span ng-click="incrementUpvotes(comment)"> ^ </span> 
+  {{ comment.upvotes }} - by {{comment.author}} 
+  <p>{{comment.body}}</p>
+</div>
+
+<form ng-submit="addComment()">
+  <input type="text" ng-model="author" placeholder="Author"></input><br>
+  <textarea ng-model="newComment" placeholder="Your Comment Here:"></textarea><br>
+  <button type="submit">Post Your Comment</button>
+</form>
