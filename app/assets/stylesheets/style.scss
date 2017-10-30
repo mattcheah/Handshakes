@@ -5,14 +5,90 @@ $pageBackgroundColor: #DDD;
 $wellBackgroundColor: #CCC;
 
 
+// Main Template Styles
 body {
     color: $primaryFontColor;
     background-color: $pageBackgroundColor;
-    padding: 100px;
+    margin:0;
+    box-sizing:border-box;
 }
 
 .container {
-    padding:40px;
-    border-radius:6px;
+    padding: 40px 200px;
+    width:100%;
+    box-sizing:border-box;
+}
+
+.well {
     background-color: $wellBackgroundColor;
+}
+
+.left-side-box, .right-side-box {
+    width:50%;       
+}
+
+#nav {
+    display:flex;
+    height:56px;
+    position:absolute;
+    top:0;
+    background-color:rgba(0,0,0,.2);
+    width:100%;
+    padding:0 20px;
+    
+    #nav-logo, #nav-user {
+        width:20%;
+        color:white;
+        p {
+            font-size:18px;
+            font-weight: 700;
+        }
+    }
+    
+    #nav-items {
+        width:60%;
+        color:white;
+    }
+}
+
+footer {
+    background-color:#999;
+    padding:20px 60px;
+    
+}
+
+
+// Homepage Styles
+
+#home-hero-image {
+    height:500px;
+    background-color:#100020; // To be changed
+    margin: auto;
+    color:white;
+    padding-top:70px;
+    
+    h1 {
+        font-size:50px;
+        text-align:center;
+    }
+    h2 {
+        font-size:26px;
+        text-align:center;
+    }
+}
+
+#home-start {
+    display:flex;
+    
+    .left-side-box, .right-side-box {
+         padding:20px;
+    }
+}
+
+#home-featured {
+    display:flex;
+    
+    .left-side-box, .right-side-box {
+        padding:20px;
+    }       
 }

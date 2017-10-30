@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
-  root 'application#angular'
+  root 'application#index'
   
   resources :posts, only: [:create, :index, :show] do
     resources :comments, only: [:show, :create] do

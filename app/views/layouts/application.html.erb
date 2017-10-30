@@ -6,16 +6,33 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body ng-app="handshakes">
+<body>
 
-  <h1>Handshakes</h1>
-  <div class="container">
-      <ui-view></ui-view>
-  </div>
+  <nav id="nav">
+    <div id="nav-logo">
+      <p>Handshakes</p>
+    </div>
+    <div id="nav-items">
+      <ul>
+        <li>Home</li>
+        <li>How It Works</li>
+        <li>Our Impact</li>
+      </ul>
+    </div>
+    <div id="nav-user">
+      <ul>
+        <li>Sign up</li>
+        <li>Sign in</li>
+      </ul>
+    </div>
+  </nav>
   
+<%= yield %>
   
-  
-  
-
 </body>
+<footer>
+  <div class="container">
+    <p>Handshakes is a thing.</p>
+  </div>
+</footer>
 </html>
