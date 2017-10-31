@@ -48,6 +48,26 @@ body {
     #nav-items {
         width:60%;
         color:white;
+        
+        ul {
+            list-style-type:none;
+            
+            li {
+                padding:10px;
+                float:left;
+            }
+        }
+    }
+    
+    #nav-user {
+        ul {
+            list-style-type:none;
+            
+            li {
+                padding: 10px;
+                float: left;
+            }
+        }
     }
 }
 

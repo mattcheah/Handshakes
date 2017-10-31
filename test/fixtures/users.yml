@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first: MyString
+  last: MyString
+  email: MyString
+  password: MyString
+  skills: MyText
+  favoriteNpos: MyText
+  favoriteBusinesses: MyText
+  profilePicture: false
+  hoursWorked: 1
+  moneyRaised: 1
+  reviews: MyText
+  currentProjects: MyText
+  applications: MyText
+  bio: MyText
+  messageThreads: MyText
+
+two:
+  first: MyString
+  last: MyString
+  email: MyString
+  password: MyString
+  skills: MyText
+  favoriteNpos: MyText
+  favoriteBusinesses: MyText
+  profilePicture: false
+  hoursWorked: 1
+  moneyRaised: 1
+  reviews: MyText
+  currentProjects: MyText
+  applications: MyText
+  bio: MyText
+  messageThreads: MyText
