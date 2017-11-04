@@ -23,7 +23,6 @@
     </div>
     <div id="nav-user">
       <ul>
-        <% #byebug %>
         <% if user_signed_in? %>
           <li>Welcome, <%= current_user.first %> | <%= link_to("Profile", "/profile") %></li>
           <li><%= link_to("Sign Out", users_sign_out_path, method: :delete) %></li>
