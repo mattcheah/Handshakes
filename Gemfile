@@ -31,6 +31,11 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_bot'
+  gem 'foreman'
+end
+
+group :test do 
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development do
