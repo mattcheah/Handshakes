@@ -54,17 +54,15 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
+  devise_scope :user do
+    get "/users/sign_out" => "devise/sessions#destroy"
+  end
+  
+  devise_for :users, controllers: { sessions: "users/sessions" }
+  # devise_for :users
+  resources :users
+  
+  get 'how_it_works/' => 'application#how_it_works'
   root 'application#index'
   
-  resources :posts, only: [:create, :index, :show] do
-    resources :comments, only: [:show, :create] do
-      member do 
-        put '/upvote' => 'comments#upvote'
-      end
-    end
-    
-    member do
-      put '/upvote' => 'posts#upvote'
-    end
-  end
 end

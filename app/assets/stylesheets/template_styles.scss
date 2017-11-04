@@ -1,0 +1,70 @@
+// Main Template Styles
+
+body {
+    color: $primaryFontColor;
+    background-color: $pageBackgroundColor;
+    margin:0;
+    box-sizing:border-box;
+}
+
+.container {
+    padding: 40px 200px;
+    width:100%;
+    box-sizing:border-box;
+}
+
+.well {
+    background-color: $wellBackgroundColor;
+}
+
+.left-side-box, .right-side-box {
+    width:50%;       
+}
+
+#nav {
+    display:flex;
+    height:56px;
+    background-color: black;
+    width:100%;
+    padding:0 20px;
+    
+    #nav-logo, #nav-user {
+        width:20%;
+        color:white;
+        p {
+            font-size:18px;
+            font-weight: 700;
+        }
+    }
+    
+    #nav-items {
+        width:60%;
+        color:white;
+        
+        ul {
+            list-style-type:none;
+            
+            li {
+                padding:10px;
+                float:left;
+            }
+        }
+    }
+    
+    #nav-user {
+        ul {
+            list-style-type:none;
+            
+            li {
+                padding: 10px;
+                float: left;
+            }
+        }
+    }
+}
+
+footer {
+    background-color:#999;
+    padding:20px 60px;
+    
+}

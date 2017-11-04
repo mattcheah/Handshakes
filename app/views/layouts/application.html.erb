@@ -10,23 +10,34 @@
 
   <nav id="nav">
     <div id="nav-logo">
-      <p>Handshakes</p>
+      <a href="/">
+        <p>Handshakes</p>
+      </a>
     </div>
     <div id="nav-items">
       <ul>
-        <li>Home</li>
-        <li>How It Works</li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/how_it_works">How It Works</a></li>
         <li>Our Impact</li>
       </ul>
     </div>
     <div id="nav-user">
       <ul>
-        <li>Sign up</li>
-        <li>Sign in</li>
+        <% #byebug %>
+        <% if user_signed_in? %>
+          <li>Welcome, <%= current_user.first %> </li>
+          <!--<li><a href="" id="sign-out-button">Sign Out</a></li>-->
+          <li><%= link_to("Sign Out", users_sign_out, method: :delete) %></li>
+        <% else %>
+          <li><%= link_to("Sign Up", new_user_url) %></li>
+          <li><%= link_to("Sign In", new_user_session_url) %></li>
+        <% end %>
       </ul>
     </div>
   </nav>
   
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
 
   <%= yield %>
