@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031185202) do
+ActiveRecord::Schema.define(version: 20171104204142) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "body"
@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(version: 20171031185202) do
     t.text     "skills"
     t.text     "favoriteNpos"
     t.text     "favoriteBusinesses"
-    t.boolean  "profilePicture",         default: false
-    t.integer  "hoursWorked",           default: 0
-    t.integer  "moneyRaised",           default: 0
+    t.boolean  "profilePicture"
+    t.integer  "hoursWorked"
+    t.integer  "moneyRaised"
     t.text     "reviews"
     t.text     "currentProjects"
     t.text     "applications"
@@ -58,8 +58,12 @@ ActiveRecord::Schema.define(version: 20171031185202) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
