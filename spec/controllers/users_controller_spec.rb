@@ -35,7 +35,10 @@ RSpec.describe UsersController, type: :controller do
   let(:invalid_attributes) {
     {first: "", last: "", email: "ma", password: "mypwh"}
   }
-
+  
+  before_each do 
+    @user1 = User.create!({first: "Matt", last: "Cheah", email: "matt.cheah123@gmail.com", password: "mypasswordhere"})
+  end
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # UsersController. Be sure to keep this updated too.
