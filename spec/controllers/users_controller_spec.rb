@@ -59,18 +59,11 @@ RSpec.describe UsersController, type: :controller do
       end
     end
   
-    describe "GET #new" do
-      it "returns a success response" do
-        get :new
-        expect(response).to be_success
-      end
-    end
-  
     describe "GET #edit" do
       it "is not successful" do
         get :edit, {:id => @user1.id}
         expect(response).to_not be_success
-        expect(response).to redirect_to(new_user_session)
+        expect(response).to redirect_to(new_user_session_path)
       end
     end
   
@@ -78,7 +71,7 @@ RSpec.describe UsersController, type: :controller do
       context "with valid params" do
         it "creates a new User" do
           expect {
-            post :create, {:user => valid_attributes}
+            create(:user)
           }.to change(User, :count).by(1)
         end
   
@@ -140,6 +133,8 @@ RSpec.describe UsersController, type: :controller do
         end
       end
     end
+    
+  end #end logged in context
   
     describe "DELETE #destroy" do
       
@@ -177,6 +172,5 @@ RSpec.describe UsersController, type: :controller do
       end
       
     end
-
-  end
+    
 end
