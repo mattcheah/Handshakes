@@ -1,4 +1,13 @@
-<p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
+<div id="content">
+    
+    <h1>User: <%= @user.first+" "+@user.last %> </h1>
+    
+    
+    <%= link_to 'Edit', edit_user_registration_path(@user) %> |
+    <%= link_to 'Back to all Users', users_path %>
+
+</div>
