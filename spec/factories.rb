@@ -1,4 +1,5 @@
-Factory_Bot.define do 
+
+FactoryBot.define do 
     factory :user do
         first "matt"
         last "cheah"

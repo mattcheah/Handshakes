@@ -31,114 +31,152 @@ RSpec.describe UsersController, type: :controller do
   let(:valid_attributes) {
     {first: "Matt", last: "Cheah", email: "matt.cheah123@gmail.com", password: "mypasswordhere"}
   }
+  let(:new_attributes) {
+    {first: "Matt2", last: "Cheah2", email: "matt.cheah123@gmail.com", password: "mypasswordhere"}
+  }
 
   let(:invalid_attributes) {
     {first: "", last: "", email: "ma", password: "mypwh"}
   }
   
-  before_each do 
-    @user1 = User.create!({first: "Matt", last: "Cheah", email: "matt.cheah123@gmail.com", password: "mypasswordhere"})
-  end
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # UsersController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
-
-  describe "GET #index" do
-    it "returns a success response" do
-      user = User.create! valid_attributes
-      get :index, {}, valid_session
-      expect(response).to be_success
+  context "When not logged in" do
+  
+    before(:each) do
+      @user1 = create(:user)
     end
-  end
-
-  describe "GET #show" do
-    it "returns a success response" do
-      user = User.create! valid_attributes
-      get :show, {:id => user.to_param}, valid_session
-      expect(response).to be_success
-    end
-  end
-
-  describe "GET #new" do
-    it "returns a success response" do
-      get :new, {}, valid_session
-      expect(response).to be_success
-    end
-  end
-
-  describe "GET #edit" do
-    it "returns a success response" do
-      user = User.create! valid_attributes
-      get :edit, {:id => user.to_param}, valid_session
-      expect(response).to be_success
-    end
-  end
-
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new User" do
-        expect {
-          post :create, {:user => valid_attributes}, valid_session
-        }.to change(User, :count).by(1)
-      end
-
-      it "redirects to the created user" do
-        post :create, {:user => valid_attributes}, valid_session
-        expect(response).to redirect_to(User.last)
-      end
-    end
-
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, {:user => invalid_attributes}, valid_session
+  
+    describe "GET #index" do
+      it "returns a success response" do
+        get :index
         expect(response).to be_success
       end
     end
-  end
-
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested user" do
-        user = User.create! valid_attributes
-        put :update, {:id => user.to_param, :user => new_attributes}, valid_session
-        user.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "redirects to the user" do
-        user = User.create! valid_attributes
-        put :update, {:id => user.to_param, :user => valid_attributes}, valid_session
-        expect(response).to redirect_to(user)
-      end
-    end
-
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'edit' template)" do
-        user = User.create! valid_attributes
-        put :update, {:id => user.to_param, :user => invalid_attributes}, valid_session
+  
+    describe "GET #show" do
+      it "returns a success response" do
+        get :show, {:id => @user1.id}
         expect(response).to be_success
       end
     end
-  end
+  
+    describe "GET #new" do
+      it "returns a success response" do
+        get :new
+        expect(response).to be_success
+      end
+    end
+  
+    describe "GET #edit" do
+      it "is not successful" do
+        get :edit, {:id => @user1.id}
+        expect(response).to_not be_success
+        expect(response).to redirect_to(new_user_session)
+      end
+    end
+  
+    describe "POST #create" do
+      context "with valid params" do
+        it "creates a new User" do
+          expect {
+            post :create, {:user => valid_attributes}
+          }.to change(User, :count).by(1)
+        end
+  
+        it "redirects to the created user" do
+          post :create, {:user => valid_attributes}
+          expect(response).to redirect_to(User.last)
+        end
+      end
+  
+      context "with invalid params" do
+        before(:each) do
+          post :create, {:user => invalid_attributes}
+        end
+        
+        it "returns a success response (i.e. to display the 'new' template)" do
+          expect(response).to be_success
+          expect(response).to render(new_user_registration)
+        end
+        
+        it "does not create a new user" do
+          expect(User.last.first).to_not be "Matt2"
+        end          
+      end
+    end
+    
 
-  describe "DELETE #destroy" do
-    it "destroys the requested user" do
-      user = User.create! valid_attributes
-      expect {
-        delete :destroy, {:id => user.to_param}, valid_session
-      }.to change(User, :count).by(-1)
+    describe "PUT #update" do
+      context "with valid params" do
+  
+        it "updates the requested user" do
+          user = User.create! valid_attributes
+          put :update, {:id => user.id, :user => new_attributes}
+          user.reload
+          expect(user.first).to be "Matt2"
+          expect(user.last).to be "Cheah2"
+        end
+  
+        it "redirects to the user" do
+          user = User.create! valid_attributes
+          put :update, {:id => user.id, :user => new_attributes}
+          expect(response).to redirect_to(user)
+        end
+      end
+  
+      context "with invalid params" do
+        it "returns a success response (i.e. to display the 'edit' template)" do
+          user = User.create! valid_attributes
+          put :update, {:id => user.to_param, :user => invalid_attributes}
+          expect(response).to be_success
+          expect(response).to redirect_to(edit_user_registration)
+        end
+        
+        it "does not create make any changes" do 
+          user = User.create! valid_attributes
+          put :update, {:id => user.to_param, :user => invalid_attributes}
+          user.reload
+          expect(user.first).to_not be "Matt2"
+          expect(user.last).to_not be "Cheah2"
+        end
+      end
+    end
+  
+    describe "DELETE #destroy" do
+      
+      before(:each) do
+        @user = User.create! valid_attributes
+      end
+      
+      context "when logged in" do
+        
+        it "destroys the requested user" do
+          expect {
+            delete :destroy, {:id => @user.to_param}
+          }.to change(User, :count).by(-1)
+        end
+    
+        it "redirects to the users list" do
+          delete :destroy, {:id => @user.to_param}
+          expect(response).to redirect_to(users_url)
+        end
+        
+      end
+      
+      context "when not logged in" do
+
+        it "does not destroy the requested user" do
+          expect {
+            delete :destroy, {:id => @user.to_param}
+          }.to_not change(User, :count)
+        end
+    
+        it "redirects to the users list" do
+          delete :destroy, {:id => @user.to_param}
+          expect(response).to redirect_to(@user)
+        end
+      end
+      
     end
 
-    it "redirects to the users list" do
-      user = User.create! valid_attributes
-      delete :destroy, {:id => user.to_param}, valid_session
-      expect(response).to redirect_to(users_url)
-    end
   end
-
 end
