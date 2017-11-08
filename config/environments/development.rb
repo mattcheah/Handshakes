@@ -40,7 +40,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   
   # config set for Devise Authentication in development
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'https://handshakes-mattcheah.c9users.io/', port: 3000 }
   
   config.action_mailer.delivery_method = :smtp
   
