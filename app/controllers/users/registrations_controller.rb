@@ -37,8 +37,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   # GET /user/next_steps
   def next_steps
+    authenticate_user
     @user = current_user
-    
   end
 
   # GET /resource/edit
@@ -92,5 +92,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   
+  def authenticate_user 
+    unless user_signed_in?
+      flash[:alert] = 'You must be signed in to access this page.'
+      redirect_to root_path
+    end
+  end
+      
   
 end
