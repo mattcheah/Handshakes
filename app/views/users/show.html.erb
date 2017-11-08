@@ -2,11 +2,26 @@
 
 <div id="content">
     
-    <h1>User: <%= @user.first+" "+@user.last %> </h1>
+    <h1><%= @user.first+" "+@user.last %> Profile</h1>
     
     <p id="notice"><%= notice %></p>
     <p id="alert"><%= alert %></p>
     
+    <div class="flex-container">
+        
+        <div class="left-side-box">
+            <p><%= @user.bio || @user.first + " " + @user.last + " has not entered a bio for their profile" %></p>
+        </div>
+        <div class="right-side-box">
+            <div id="profile-picture-box">
+                <% if @user.profilePicture %>
+                    <img src="/images/profile-pictures/<%= @user.id %>.jpg">
+                <% else %>
+                    <img src="/images/profile-pictures/default.jpg">
+                <% end %>
+            </div>
+        </div>
+    </div>
     
     <%= link_to 'Edit', edit_user_registration_path(@user) %> |
     <%= link_to 'Back to all Users', users_path %>

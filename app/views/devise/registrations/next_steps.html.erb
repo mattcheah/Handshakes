@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
+<div id="content">
+
+  <h2>Thanks for Signing Up, <%= @user.first %>!</h2>
+  <p>Lets learn a little bit more about you!</p>
+  
+  <p>When you volunteer for a business, what skills do you have to offer?</p>
+  <input type="text" placeholder="Search for a skill / program / language" >
+  
+  <p>What types of causes do you wish to support?</p>
+  <input type="text" placeholder="Search for a cause that you would like to benefit">
+  
+  
+  <!--<%= form_for(@user) do |f| %>-->
+  <!--  <%= devise_error_messages! %>-->
+  
+  <!--  <div class="field">-->
+  <!--    <%= f.label :first %>-->
+  <!--    <%= f.text_field :first, autofocus: true%>-->
+      
+  <!--    <%= f.label :last %>-->
+  <!--    <%= f.text_field :last %>-->
+  <!--  </div>-->
+  
+  <!--  <div class="field">-->
+  <!--    <%= f.label :email %><br />-->
+  <!--    <%= f.email_field :email  %>-->
+  <!--  </div>-->
+  
+  <!--  <div class="field">-->
+  <!--    <%= f.label :password %>-->
+  <!--    <% if @minimum_password_length %>-->
+  <!--    <em>(<%= @minimum_password_length %> characters minimum)</em>-->
+  <!--    <% end %><br />-->
+  <!--    <%= f.password_field :password, autocomplete: "off" %>-->
+  <!--  </div>-->
+  
+  <!--  <div class="field">-->
+  <!--    <%= f.label :password_confirmation %><br />-->
+  <!--    <%= f.password_field :password_confirmation, autocomplete: "off" %>-->
+  <!--  </div>-->
+  
+  <!--  <div class="actions">-->
+  <!--    <%= f.submit "Sign up" %>-->
+  <!--  </div>-->
+  <!--<% end %>-->
+  
+  <!--<%= render "devise/shared/links" %>-->
+
+</div>

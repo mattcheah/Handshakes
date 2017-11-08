@@ -53,3 +53,17 @@ body.home {
         padding:20px;
     }       
 }
+
+// User#show styles
+
+#profile-picture-box {
+    width:200px;
+    height:200px;
+    background-color:#AAA;
+    border-radius:4px;
+    float:right;
+    
+    img {
+        width:100%;
+    }
+}

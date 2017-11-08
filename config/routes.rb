@@ -58,11 +58,13 @@ Rails.application.routes.draw do
     get "/users/sign_out" => "devise/sessions#destroy"
   end
   
-  devise_for :users, controllers: { sessions: "users/sessions" }
-  # devise_for :users
+  devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
+  get '/users/next_steps' => 'users/registrations#next_steps'
+
   resources :users, only: [:index, :show]
   
   get 'how_it_works/' => 'application#how_it_works'
+  get 'our_impact' => 'application#our_impact'
   
   root 'application#index'
   

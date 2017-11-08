@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
     render 'layouts/how_it_works'
   end
   
+  def our_impact
+    render 'layouts/our_impact'
+  end
+  
   protected
 
   def configure_permitted_parameters
