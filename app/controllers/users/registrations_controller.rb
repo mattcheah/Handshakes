@@ -9,11 +9,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   #POST /resource
   def create
-    byebug
+    # super
+    # byebug
     build_resource(sign_up_params)
 
     resource.save
-    byebug
+    # byebug
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?
@@ -31,7 +32,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       respond_with resource
     end
     
-    redirect_to users_next_steps_path
+    # redirect_to users_next_steps_path
   end
   
   # GET /user/next_steps
@@ -77,12 +78,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    stored_location_for(resource) ||
+    if resource.is_a?(User)
+      users_next_steps_path
+    else
+      super(resource)
+    end
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  
+  
 end
