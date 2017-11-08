@@ -67,3 +67,14 @@ body.home {
         width:100%;
     }
 }
+
+#accomplishments-container {
+    margin:20px 0;
+    background-color:#AAA;
+    border-radius:6px;
+    padding:20px;
+    .accomplishments-numbers {
+        font-size:24px;
+        font-weight:700;
+    }
+}

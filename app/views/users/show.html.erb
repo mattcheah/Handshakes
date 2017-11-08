@@ -3,6 +3,7 @@
 <div id="content">
     
     <h1><%= @user.first+" "+@user.last %> Profile</h1>
+    <div class="linebreak"></div>
     
     <p id="notice"><%= notice %></p>
     <p id="alert"><%= alert %></p>
@@ -22,6 +23,52 @@
             </div>
         </div>
     </div>
+    <div id="accomplishments-container">
+        <div class="flex-container">
+            <div>
+                <p>
+                    Hours Worked:
+                </p>
+                <p class="accomplishments-numbers">
+                    <%= @user.hoursWorked %>
+                </p>
+            </div>
+            <div>
+                <p>
+                Money Raised
+                </p>
+                <p class="accomplishments-numbers">
+                    $<%= @user.moneyRaised %>
+                </p>
+            </div>
+            <div>
+                <p>Projects Completed</p>
+                <p class="accomplishments-numbers">
+                    <%= @projectsCompleted%>
+                </p>
+
+            </div>
+            <div>
+                <p>Projects In-Progress</p>
+                <p class="accomplishments-numbers">
+                    <%= @currentProjects.length %>
+                </p>
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="linebreak"></div>
+    
+    <h2>Skills</h2>
+    <p>Listed skills for <%= @user.first %>:</p>
+    
+    <div class="linebreak"></div>
+    
+    <h2>Causes</h2>
+    <p>Causes that <%= @user.first %> is benefitting:</p>
+    
+    <div class="linebreak"></div>
     
     <%= link_to 'Edit', edit_user_registration_path(@user) %> |
     <%= link_to 'Back to all Users', users_path %>

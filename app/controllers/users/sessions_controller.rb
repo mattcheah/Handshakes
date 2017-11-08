@@ -12,6 +12,7 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     super
+    
   end
 
   # DELETE /resource/sign_out
@@ -26,4 +27,13 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) ||
+    if resource.is_a?(User)
+      user_path(resource.id)
+    else
+      super(resource)
+    end
+  end
 end

@@ -11,6 +11,23 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
+    if @user.currentProjects
+      @user.currentProjects.each do |x|
+        @projectsCompleted ||= 0
+        @projectsCompleted += 1 if x.complete
+      end
+    else
+      @projectsCompleted = 0 
+    end
+    
+    #Change these to be done in the model.
+    @user.moneyRaised ||= 0
+    @user.hoursWorked ||= 0
+    @currentProjects = @user.currentProjects || []
+    byebug
+    
+    
   end
 
   # # GET /users/1/edit
