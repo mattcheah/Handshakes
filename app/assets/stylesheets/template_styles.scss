@@ -1,4 +1,7 @@
 // Main Template Styles
+* {
+    box-sizing:border-box;
+}
 
 body {
     color: $primaryFontColor;
@@ -54,7 +57,7 @@ body {
     }
     
     #nav-items {
-        width:40%;
+        width:35%;
         color:white;
         
         ul {
@@ -68,16 +71,37 @@ body {
     }
     
     #nav-user {
-        width:40%;
+        width:45%;
         ul {
             list-style-type:none;
             
             li {
                 padding: 3px 10px;
-                float: left;
+                float: right;
             }
         }
     }
+}
+
+#notice, #alert {
+    text-align: center;
+    display: block;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    display:none;
+}
+
+#notice {
+    color: #1dde12;
+    background-color: rgba(32, 123, 32, 0.2);
+    box-shadow: inset 0px 0px 50px rgba(0,0,0,.1);
+}
+
+#alert {
+    color: #c13030;
+    background-color: rgba(210, 30, 57, 0.3);
+    box-shadow: inset 0px 0px 50px rgba(0,0,0,.2);
 }
 
 p {

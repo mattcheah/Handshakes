@@ -6,6 +6,9 @@ $wellBackgroundColor: #CCC;
 
 $primaryFont: "Open Sans", Helvetica, Ariel, Sans;
 
+@mixin filter-gradient($color1, $color2, $direction) {
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$color1, endColorstr=$color2,GradientType=1 );
+}
 
 
 
@@ -16,7 +19,11 @@ body.home {
 
 #home-hero-image {
     height:500px;
-    background-color:#100020; // To be changed
+    background: #2aacd3;
+    background: -moz-linear-gradient(-45deg, #2aacd3 0%, #3cc9b8 100%);
+    background: -webkit-linear-gradient(-45deg, #2aacd3 0%,#3cc9b8 100%);
+    background: linear-gradient(135deg, #2aacd3 0%,#3cc9b8 100%);
+    @include filter-gradient(#2aacd3, #3cc9b8, horizontal);
     margin: auto;
     color:white;
     padding-top:70px;

@@ -1,10 +1,11 @@
 
 
-<p id="notice"><%= notice %></p>
-<p id="alert"><%= alert %></p>
 <div id="content">
     
     <h1>User: <%= @user.first+" "+@user.last %> </h1>
+    
+    <p id="notice"><%= notice %></p>
+    <p id="alert"><%= alert %></p>
     
     
     <%= link_to 'Edit', edit_user_registration_path(@user) %> |
