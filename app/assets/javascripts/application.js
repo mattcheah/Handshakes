@@ -1,5 +1,4 @@
 //= require angular
-//= require user/next_steps
 //= require_tree .
 
 window.onload = function() {
@@ -13,21 +12,5 @@ window.onload = function() {
         notice.style.display = "block";
     }
     
-    setupSkillsCauses();
 };
 
-setupSkillsCauses = function() {
-    const skillsButton = document.getElementById("skills-submit-button");
-    const causesButton = document.getElementById("causes-submit-button");
-    skillsButton.addEventListener('click', addSkill);
-    causesButton.addEventListener('click', addCause);
-    
-}
-
-function addSkill() {
-    console.log("called addSkill");
-}
-
-function addCause() {
-    console.log("called addCause");
-}

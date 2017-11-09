@@ -40,7 +40,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
     authenticate_user
     @user = current_user
   end
+  
+  def add_skill
+    byebug
+    @user = User.find(params[:id])
+    @user.skills ||= []
+    @user.skills.push(params[:skill])
+  end
 
+  def add_cause
+    @user = User.find(params[:id])
+    # @user.skills ||= []
+    
+  end
   # GET /resource/edit
   # def edit
   #   super
