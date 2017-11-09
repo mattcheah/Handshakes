@@ -25,8 +25,6 @@ class UsersController < ApplicationController
     @user.moneyRaised ||= 0
     @user.hoursWorked ||= 0
     @currentProjects = @user.currentProjects || []
-    byebug
-    
     
   end
 

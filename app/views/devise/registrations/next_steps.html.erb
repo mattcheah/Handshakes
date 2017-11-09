@@ -5,12 +5,19 @@
   <h2>Thanks for Signing Up, <%= @user.first %>!</h2>
   <p>Lets learn a little bit more about you!</p>
   
+  <div class="linebreak"></div>
+  
   <p>When you volunteer for a business, what skills do you have to offer?</p>
-  <input type="text" placeholder="Search for a skill / program / language" >
+  <input id="skills-field" type="text" placeholder="Search for a skill / program / language" >
+  <button id="skills-submit-button">Submit Skill</button><br>
+  
+  <div class="linebreak"></div>
   
   <p>What types of causes do you wish to support?</p>
-  <input type="text" placeholder="Search for a cause that you would like to benefit">
+  <input id="causes-field" type="text" placeholder="Search for a cause that you would like to benefit">
+  <button id="causes-submit-button">Submit Cause</button><br>
   
+  <div class="linebreak"></div>
   
   <!--<%= form_for(@user) do |f| %>-->
   <!--  <%= devise_error_messages! %>-->
