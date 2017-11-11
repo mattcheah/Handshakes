@@ -8,51 +8,32 @@
   <div class="linebreak"></div>
   
   <p>When you volunteer for a business, what skills do you have to offer?</p>
-  <input id="skills-field" type="text" placeholder="Search for a skill / program / language" >
-  <button id="skills-submit-button">Submit Skill</button><br>
+  <!--<input id="skills-field" type="text" placeholder="Search for a skill / program / language" >-->
+  <!--<button id="skills-submit-button">Submit Skill</button><br>-->
+  
+  <%= form_with url: users_add_skill_path, id: "skills-form", format: 'json' do |f| %>
+    <%= f.label :skill %> 
+    <%= f.text_field :skill, placeholder: "Submit your skill" %>
+    
+    <%= f.submit "Submit Skill" %>
+    
+  <% end %>
   
   <div class="linebreak"></div>
+  
   
   <p>What types of causes do you wish to support?</p>
-  <input id="causes-field" type="text" placeholder="Search for a cause that you would like to benefit">
-  <button id="causes-submit-button">Submit Cause</button><br>
+  
+   <%= form_with url: users_add_cause_path, id: "causes-form" do |f| %>
+    <%= f.label :skill %> 
+    <%= f.text_field :skill, placeholder: "Submit your causes" %>
+    
+    <%= f.submit "Submit Cause" %>
+    
+  <% end %>
   
   <div class="linebreak"></div>
-  
-  <!--<%= form_for(@user) do |f| %>-->
-  <!--  <%= devise_error_messages! %>-->
-  
-  <!--  <div class="field">-->
-  <!--    <%= f.label :first %>-->
-  <!--    <%= f.text_field :first, autofocus: true%>-->
-      
-  <!--    <%= f.label :last %>-->
-  <!--    <%= f.text_field :last %>-->
-  <!--  </div>-->
-  
-  <!--  <div class="field">-->
-  <!--    <%= f.label :email %><br />-->
-  <!--    <%= f.email_field :email  %>-->
-  <!--  </div>-->
-  
-  <!--  <div class="field">-->
-  <!--    <%= f.label :password %>-->
-  <!--    <% if @minimum_password_length %>-->
-  <!--    <em>(<%= @minimum_password_length %> characters minimum)</em>-->
-  <!--    <% end %><br />-->
-  <!--    <%= f.password_field :password, autocomplete: "off" %>-->
-  <!--  </div>-->
-  
-  <!--  <div class="field">-->
-  <!--    <%= f.label :password_confirmation %><br />-->
-  <!--    <%= f.password_field :password_confirmation, autocomplete: "off" %>-->
-  <!--  </div>-->
-  
-  <!--  <div class="actions">-->
-  <!--    <%= f.submit "Sign up" %>-->
-  <!--  </div>-->
-  <!--<% end %>-->
-  
+ 
   <!--<%= render "devise/shared/links" %>-->
 
 </div>

@@ -1,6 +1,9 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  respond_to :html, except: [:add_skill, :add_cause]
+  respond_to :json, only: [:add_skill, :add_cause]
+  respond_to :js
 
   # GET /resource/sign_up
   def new
@@ -42,16 +45,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   
   def add_skill
-    byebug
-    @user = User.find(params[:id])
-    @user.skills ||= []
+    @user = current_user
     @user.skills.push(params[:skill])
+    
+    respond_to do |format|
+      if @user.save
+        format.json { render json: @user.skills, status: :created, location: @user }
+      else
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def add_cause
-    @user = User.find(params[:id])
-    # @user.skills ||= []
-    
+    @user = current_user
+
   end
   # GET /resource/edit
   # def edit
