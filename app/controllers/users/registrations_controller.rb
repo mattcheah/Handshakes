@@ -73,10 +73,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.skills.delete(skill)
       respond_to do |format|
         if @user.save
-          byebug
-          format.json { render json: @user.skills, status: :ok }
+          format.json { render json: skill, status: :ok }
         else
-          format.json { render json: @user.skills, status: :unprocessable_entity }
+          format.json { render json: skill, status: :unprocessable_entity }
         end
       end
     end

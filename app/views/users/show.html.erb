@@ -63,6 +63,7 @@
     <h2>Skills</h2>
     <p>Listed skills for <%= @user.first %>:</p>
     
+    <%= render :partial => 'users/skill_badges', :collection => @user.skills, locals: {:skills => @user.skills} %>
     <div class="linebreak"></div>
     
     <h2>Causes</h2>
