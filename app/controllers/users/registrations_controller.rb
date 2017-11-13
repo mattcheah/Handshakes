@@ -1,8 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  respond_to :html, except: [:add_skill, :add_cause]
-  respond_to :json, only: [:add_skill, :add_cause]
+  respond_to :html, except: [:add_skill, :add_cause, :delete_skill]
+  respond_to :json, only: [:add_skill, :add_cause, :delete_skill]
   
 
   # GET /resource/sign_up
@@ -69,14 +69,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def delete_skill
     @user = current_user
     skill = params[:skill]
-    
     if @user.skills.include?(skill)
       @user.skills.delete(skill)
-      
-      if @user.save
-        format.json { render json: @user.skills, status: :deleted }
-      else
-        format.json { render json: @user.skills, status: :unprocessable_entity }
+      respond_to do |format|
+        if @user.save
+          byebug
+          format.json { render json: @user.skills, status: :ok }
+        else
+          format.json { render json: @user.skills, status: :unprocessable_entity }
+        end
       end
     end
       
