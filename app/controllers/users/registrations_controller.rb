@@ -42,6 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def next_steps
     authenticate_user
     @user = current_user
+    @skills = @user.skills
   end
   
   def add_skill
@@ -63,6 +64,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
         format.json { render json: "This skill exists", errors: "This skill is already added!" }
       end
     end
+  end
+  
+  def delete_skill
+    @user = current_user
+    skill = params[:skill]
+    
+    if @user.skills.include?(skill)
+      @user.skills.delete(skill)
+      
+      if @user.save
+        format.json { render json: @user.skills, status: :deleted }
+      else
+        format.json { render json: @user.skills, status: :unprocessable_entity }
+      end
+    end
+      
   end
 
   def add_cause

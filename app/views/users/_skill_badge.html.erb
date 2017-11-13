@@ -1,9 +1,8 @@
 <% @skills.each do |skill| %>
 
     <div class="skill-badge">
-        <%= #link_to skill,  %>
         <%= skill %>
-        <span class="skill-delete"><%= link_to "X", user_delete_skill_path(skill) %></span>
+        <span class="skill-delete"><%= link_to "X", users_delete_skill_path(skill) %></span>
     </div>
 
 <% end %>

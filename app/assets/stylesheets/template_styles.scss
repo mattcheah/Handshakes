@@ -120,7 +120,8 @@ footer {
 }
 
 .left-side-box, .right-side-box {
-    width:50%;       
+    width:50%;     
+    float:left;
 }
 
 .linebreak {
@@ -128,4 +129,8 @@ footer {
     height:0px;
     border-bottom:1px solid black;
     margin:30px 0;
+}
+
+.clear {
+    clear:both;
 }

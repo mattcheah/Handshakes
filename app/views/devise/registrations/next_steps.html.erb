@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 <p id="alert"><%= alert %></p>
-<div id="content">
+<div id="content" class="user-next-steps">
 
   <h2>Thanks for Signing Up, <%= @user.first %>!</h2>
   <p>Lets learn a little bit more about you!</p>
   
   <div class="linebreak"></div>
-  <div class="container">
+  <div class="">
     <div class="left-side-box">
       <p>When you volunteer for a business, what skills do you have to offer?</p>
       <!--<input id="skills-field" type="text" placeholder="Search for a skill / program / language" >-->
       <!--<button id="skills-submit-button">Submit Skill</button><br>-->
-      
+      <br>
       <%= form_with url: users_add_skill_path, id: "skills-form", format: 'json' do |f| %>
         <%= f.label :skill %><br>
         <%= f.text_field :skill, placeholder: "Submit your skill" %>
@@ -23,8 +23,9 @@
       <p id="skills-form-messages"></p>
     </div>
     <div class="right-side-box">
-      
+      <%= render 'users/skill_badge' %>
     </div>
+    <div class="clear"></div>
   </div>
   
   <div class="linebreak"></div>

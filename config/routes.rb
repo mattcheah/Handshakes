@@ -58,6 +58,7 @@ Rails.application.routes.draw do
     get "/users/sign_out" => "devise/sessions#destroy"
     get '/users/next_steps' => 'users/registrations#next_steps'
     post '/users/add_skill' => 'users/registrations#add_skill', :defaults => { :format => :json }
+    post '/users/delete_skill' => 'users/registrations#delete_skill', :defaults => { :format => :json }
     post '/users/add_cause' => 'users/registrations#add_cause', :defaults => { :format => :json }
   end
   
