@@ -6,18 +6,26 @@
   <p>Lets learn a little bit more about you!</p>
   
   <div class="linebreak"></div>
-  
-  <p>When you volunteer for a business, what skills do you have to offer?</p>
-  <!--<input id="skills-field" type="text" placeholder="Search for a skill / program / language" >-->
-  <!--<button id="skills-submit-button">Submit Skill</button><br>-->
-  
-  <%= form_with url: users_add_skill_path, id: "skills-form", format: 'json' do |f| %>
-    <%= f.label :skill %> 
-    <%= f.text_field :skill, placeholder: "Submit your skill" %>
-    
-    <%= f.submit "Submit Skill" %>
-    
-  <% end %>
+  <div class="container">
+    <div class="left-side-box">
+      <p>When you volunteer for a business, what skills do you have to offer?</p>
+      <!--<input id="skills-field" type="text" placeholder="Search for a skill / program / language" >-->
+      <!--<button id="skills-submit-button">Submit Skill</button><br>-->
+      
+      <%= form_with url: users_add_skill_path, id: "skills-form", format: 'json' do |f| %>
+        <%= f.label :skill %><br>
+        <%= f.text_field :skill, placeholder: "Submit your skill" %>
+        
+        <%= f.submit "Submit Skill" %>
+        
+      <% end %>
+      
+      <p id="skills-form-messages"></p>
+    </div>
+    <div class="right-side-box">
+      
+    </div>
+  </div>
   
   <div class="linebreak"></div>
   

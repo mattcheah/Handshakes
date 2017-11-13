@@ -39,8 +39,10 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   
+  
+  
   # config set for Devise Authentication in development
-  config.action_mailer.default_url_options = { host: 'https://handshakes-mattcheah.c9users.io/', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
   
   config.action_mailer.delivery_method = :smtp
   
@@ -54,5 +56,6 @@ Rails.application.configure do
     password: ENV["GMAIL_PASSWORD"]
   }
 
-
+  Rails.application.routes.default_url_options[:host] = 'domain.com'
+  
 end

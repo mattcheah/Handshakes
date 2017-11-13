@@ -3,7 +3,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
   respond_to :html, except: [:add_skill, :add_cause]
   respond_to :json, only: [:add_skill, :add_cause]
-  respond_to :js
+  
 
   # GET /resource/sign_up
   def new
@@ -46,13 +46,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   def add_skill
     @user = current_user
-    @user.skills.push(params[:skill])
+    skill = params[:skill]
     
-    respond_to do |format|
-      if @user.save
-        format.json { render json: @user.skills, status: :created, location: @user }
-      else
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+    unless @user.skills.include?(skill)
+      @user.skills.push(skill) 
+    
+      respond_to do |format|
+        if @user.save
+          format.json { render json: @user.skills, status: :created }
+        else
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      end
+    else 
+      respond_to do |format|
+        format.json { render json: "This skill exists", errors: "This skill is already added!" }
       end
     end
   end
