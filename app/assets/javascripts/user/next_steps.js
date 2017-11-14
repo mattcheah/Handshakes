@@ -2,12 +2,13 @@ window.addEventListener('load', setupPageAjax);
 
 
 
+
+
 function setupPageAjax() {
     addSkillSuccess();
     deleteSkillSuccess();
         
 }    
-    
     
 function addSkillSuccess() {
     const skillsForm = document.getElementById("skills-form");

@@ -45,6 +45,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @skills = @user.skills
   end
   
+  def user_skills 
+    @user = current_user
+    respond_with @user.skills
+  end
+  
   def add_skill
     @user = current_user
     skill = params[:skill]

@@ -7,3 +7,12 @@ FactoryBot.define do
         password "mypassword"
     end
 end
+
+Factorybot.define do 
+    factory :skill do |s|
+        s.sequence(:name) { |n| "skill #{n}"}
+        s.sequence(:category) { |n| "category #{n}"}
+        s.sequence(:description) { |n| "description #{n}"}
+    end
+end
+        

@@ -6,6 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Skill.delete_all
+Cause.delete_all
+
 new_skills = [
     {
         name: "HTML",
