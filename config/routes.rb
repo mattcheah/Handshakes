@@ -69,6 +69,10 @@ Rails.application.routes.draw do
   get 'how_it_works/' => 'application#how_it_works'
   get 'our_impact' => 'application#our_impact'
   
+  get 'skills' => 'skill#index', :defaults => { :format => :json }
+  get 'causes' => 'cause#index', :defaults => { :format => :json }
+  
+  
   root 'application#index'
   
 end
