@@ -5,8 +5,7 @@
     <h1><%= @user.first+" "+@user.last %> Profile</h1>
     <div class="linebreak"></div>
     
-    <p id="notice"><%= notice %></p>
-    <p id="alert"><%= alert %></p>
+    <%= render 'partials/flash_notices' %>
     
     <div class="flex-container">
         
