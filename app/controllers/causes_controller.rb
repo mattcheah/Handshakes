@@ -1,4 +1,4 @@
-class CauseController < ApplicationController
+class CausesController < ApplicationController
     respond_to :json
 
     def index
