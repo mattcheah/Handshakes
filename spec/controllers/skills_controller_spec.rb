@@ -51,7 +51,6 @@ RSpec.describe SkillsController, type: :controller do
       
       it "persists the skill to the database" do
         post :create, params: {skill: @valid_params} 
-        byebug
         expect(Skill.last.name).to eq "New Skill"
         expect(Skill.last.category).to eq "New Category"
         expect(Skill.last.description).to eq "New Description"
@@ -65,29 +64,31 @@ RSpec.describe SkillsController, type: :controller do
       
       it "does not allow for a duplicate Skill name" do
         post :create, params: {skill: @valid_params} 
-        expect(response).to raise_error
+        expect{
+            post :create, params: {skill: @valid_params} 
+        }.to_not change{Skill.all.count}
       end
   end
   
   describe "skills DESTROY" do
      before(:each) do
-        let(:skill) { create(:skill) }
+        @skill = create(:skill)
      end
      
      it "returns success" do
-         delete :destroy, params: {id: skill.id} 
+        delete :destroy, params: {id: Skill.last.id} 
         expect(response).to have_http_status(:success)
      end
      
      it "removes the specified skill from the database" do
-        delete :destroy, params: {id: skill.id} 
-        expect(Skill.find(skill.id)).to be_nil
+        delete :destroy, params: {id: Skill.last.id} 
+        expect(Skill.find_by_id(@skill.id)).to be_nil
      end
      
      it "decreases the count of skills by 1" do
         expect {
-            delete :destroy, params: {id: skill.id}
-        }.to decrease{Skill.all.count}.by 1
+            delete :destroy, params: {id: @skill.id}
+        }.to change{Skill.all.count}.by -1
      end
      
   end

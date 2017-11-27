@@ -12,7 +12,7 @@ class SkillsController < ApplicationController
     end
     
     def create
-        @skill = Skill.create(new_skill_params[:skill])
+        @skill = Skill.create(new_skill_params)
         if @skill.save
             flash[:notice] = "Skill successfully created"
             render json: @skill, status: :created
@@ -37,6 +37,6 @@ class SkillsController < ApplicationController
     private
     
     def new_skill_params
-        params.require(:skill).permit
+        params.require(:skill).permit!
     end
 end
