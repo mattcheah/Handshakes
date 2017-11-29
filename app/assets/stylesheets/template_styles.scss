@@ -32,7 +32,7 @@ body {
     padding:0 20px;
     
     #nav-logo, #nav-user, #nav-items {
-        color:white;
+        color:#32b8c8 !important;
         p {
             font-size:18px;
             font-weight: 700;
@@ -45,13 +45,13 @@ body {
             font-size: 32px;
             padding: 10px;
             display: block;
-            color: #0db590;
+            color: #32b8c8;
         }
     }
     
     #nav-items {
         width:35%;
-        color:white;
+        color:#32b8c8;
         
         ul {
             list-style-type:none;
@@ -81,7 +81,7 @@ p {
 }
 
 footer {
-    background-color:#999;
+    background-color:#617782;
     padding:20px 60px;
     
 }
