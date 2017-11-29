@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171114044036) do
+ActiveRecord::Schema.define(version: 20171129205657) do
 
   create_table "causes", force: :cascade do |t|
     t.string "name"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 20171114044036) do
     t.string "name"
     t.string "category"
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_skills", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "skill_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,20 +85,6 @@ ActiveRecord::Schema.define(version: 20171114044036) do
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "users_causes", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "cause_id", null: false
-    t.index ["cause_id", "user_id"], name: "index_users_causes_on_cause_id_and_user_id"
-    t.index ["user_id", "cause_id"], name: "index_users_causes_on_user_id_and_cause_id"
-  end
-
-  create_table "users_skills", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "skill_id", null: false
-    t.index ["skill_id", "user_id"], name: "index_users_skills_on_skill_id_and_user_id"
-    t.index ["user_id", "skill_id"], name: "index_users_skills_on_user_id_and_skill_id"
   end
 
 end

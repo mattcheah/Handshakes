@@ -116,3 +116,6 @@ new_causes.each do |cause|
     Cause.create!(cause)
 end
 
+UserSkill.create({user_id: User.first.id, skill_id: Skill.first.id})
+UserSkill.create({user_id: User.first.id, skill_id: Skill.second.id})
+UserSkill.create({user_id: User.first.id, skill_id: Skill.third.id})

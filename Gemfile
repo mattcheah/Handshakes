@@ -33,6 +33,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_bot_rails', "~> 4.0"
   gem 'foreman'
+  gem 'awesome_print'
 end
 
 group :test do 

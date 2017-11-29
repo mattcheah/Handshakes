@@ -1,7 +1,7 @@
 <% skills.each do |skill| %>
 
-    <div id="skill-<%= skill %>"class="skill-badge">
-        <%= skill %>
+    <div id="skill-<%= skill.name %>"class="skill-badge">
+        <%= skill.name %>
         <span class="skill-delete"><%= button_to "X", users_delete_skill_path, remote: true, params: {skill: skill}, method: :post, form_class: "skill-delete-form" %></span>
     </div>
 
