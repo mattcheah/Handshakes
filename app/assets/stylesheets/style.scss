@@ -41,7 +41,7 @@ body.home {
     }
     
     #hero-image-handshake {
-        background-image: url(image_path('/assets/handshake.png'));
+        background-image: image-url('handshake.png');
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
