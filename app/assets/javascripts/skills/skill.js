@@ -1,6 +1,6 @@
 angular.module('handshakes')
 .factory('skills', ['$http', function($http) {
-    let skills  = {};
+    var skills  = {};
     // skills.get = function(id) {
     //     return $http.get('/skills/'+id+'.json').then(function(response) {
     //         return response.data;
