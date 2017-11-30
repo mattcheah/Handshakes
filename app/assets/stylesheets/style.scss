@@ -1,16 +1,17 @@
 // Style.scss
+// Variables
 
 $primaryFontColor: #000;
 $pageBackgroundColor: #f5f5f5;
 $wellBackgroundColor: #cfe0e9;
+$darkBoxColor: #4d6065;
+$navFooterColor: $darkBoxColor;
 
 $primaryFont: "Nunito Sans", Helvetica, Ariel, Sans;
 
 @mixin filter-gradient($color1, $color2, $direction) {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$color1, endColorstr=$color2,GradientType=1 );
 }
-
-
 
 // Homepage Styles
 body.home {
@@ -31,6 +32,7 @@ body.home {
     h1 {
         font-size:50px;
         text-align:center;
+        text-shadow: 1px 1px 2px black;
     }
     h2 {
         font-size:26px;
@@ -53,26 +55,72 @@ body.home {
     
     .left-side-box, .right-side-box {
          padding:20px;
+         text-align:center;
+         
+         h3 {
+             font-size:2em;
+             text-align:center;
+         }
+         button {
+            padding: 15px 40px;
+            border-radius: 4px;
+            border: 1px dashed #ffffff;
+            background-color: #258aef;
+            color: white;
+            box-shadow: 0 0 0 4px #258aef;
+            cursor:pointer;
+            font-size:24px;
+         }
+         button:hover {
+             background-color: #185fa7;
+             box-shadow: 0 0 0 4px #185fa7;
+         }
+         button:active {
+             box-shadow: 0 0 0 4px #4688cc, inset 0px 0px 28px #4688cc;
+         }
+         button:focus {
+             outline:0;
+             border: 1px solid #ffffff;
+         }
     }
 }
 
 #home-featured {
     display:flex;
-    
+    padding: 60px 150px;
+    background-color: $wellBackgroundColor;
     .left-side-box, .right-side-box {
-        padding:20px;
-    }       
+        padding:20px 40px;
+    }
+    #featured-user-right img {
+        width: 125px;
+        margin-top: 22px;
+    }
+    
+    #featured-user-name {
+        color:#0068c3;
+        font-size:18px;
+        font-weight:700;
+    }
+    
+    #featured-info {
+        margin-top:20px;
+        div p:nth-child(2) {
+            font-size:18px;
+            font-weight:bold;
+        }
+    }
 }
 
 // User#show styles
 
 #profile-picture-box {
-    width:200px;
-    height:200px;
-    background-color:#AAA;
-    border-radius:4px;
-    float:right;
-    
+    width: 210px;
+    border-radius: 4px;
+    float: right;
+    border: 10px solid $darkBoxColor;
+    max-height: 265px;
+    overflow: hidden;
     img {
         width:100%;
     }
@@ -80,9 +128,10 @@ body.home {
 
 #accomplishments-container {
     margin:20px 0;
-    background-color:#AAA;
+    background-color:$darkBoxColor;
     border-radius:6px;
     padding:20px;
+    color:white;
     .accomplishments-numbers {
         font-size:24px;
         font-weight:700;

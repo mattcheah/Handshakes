@@ -57,12 +57,11 @@ ActiveRecord::Schema.define(version: 20171129205657) do
     t.string "last"
     t.string "email"
     t.string "password"
-    t.text "skills"
     t.text "favoriteNpos"
     t.text "favoriteBusinesses"
-    t.boolean "profilePicture"
-    t.integer "hoursWorked"
-    t.integer "moneyRaised"
+    t.boolean "profilePicture", default: false
+    t.integer "hoursWorked", default: 0
+    t.integer "moneyRaised", default: 0
     t.text "reviews"
     t.text "currentProjects"
     t.text "applications"

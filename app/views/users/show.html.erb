@@ -15,9 +15,9 @@
         <div class="right-side-box">
             <div id="profile-picture-box">
                 <% if @user.profilePicture %>
-                    <img src="/images/profile-pictures/<%= @user.id %>.jpg">
+                    <img src="/assets/profile_pictures/user_<%="%.5d" % @user.id %>.jpg">
                 <% else %>
-                    <img src="/images/profile-pictures/default.jpg">
+                    <img src="/assets/profile_pictures/default.jpg">
                 <% end %>
             </div>
         </div>

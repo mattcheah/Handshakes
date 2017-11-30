@@ -1,9 +1,14 @@
 .skill-badge {
-    padding:4px;
+    padding:16px;
     border-radius:5px;
     margin:10px;
-    background-color:#DDD;
+    background-color:$darkBoxColor;
     display:inline-block;
+    color:white;
+    form {
+        display: inline-block;
+        margin-left:5px;
+    }
 }
 
 .user-next-steps {

@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   serialize :favoriteNpos, Array
   serialize :favoriteBusinesses, Array
   serialize :applications, Array
+  serialize :reviews, Array
          
   validates_confirmation_of :password, on: :create
   validates :password, length: { in: 6..200 }, on: :create

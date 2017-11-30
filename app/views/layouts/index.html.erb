@@ -14,23 +14,47 @@
 
 <div id="home-start" class="container">
     <div class="left-side-box">
-        <h3>Volunteers</h3>
+        <h2>Volunteers</h3>
         <button>Find A Project!</button>
     </div>
     <div class="right-side-box">
-        <h3>Businesses</h3>
+        <h2>Businesses</h3>
         <button>Post a Need!</button>
     </div>
 </div>
 
 <div id="home-featured" class="container">
-    <div class="left-side-box well">
-        <h3>Featured Volunteer:</h3>
-        <p><strong>Monica Geller</strong></p>
-        <p>Monica Geller is a chef at Javu's Restaurant in NYC. Monica volunteers her services to prepare gourmet meals for such celebrities as Jon Favreau, Tom Selleck, Jon Lovitz, and Matthew Perry. She uses handshakes to support her friends' non-profit, Relaxicab - a massage taxi service that helps transport underpriveliged people with an added bonus.</p>
+    <div class="left-side-box">
+        <div class="flex-between">
+            <div id="featured-user-left">
+                <h2>Featured Volunteer:</h3>
+                <p id="featured-user-name"><%= link_to "Monica Geller", User.find(2) %></p>
+                <p><%= User.find(2).bio %></p>
+            </div>
+            
+            <% if (User.find(2).profilePicture) %>
+            <div id="featured-user-right">
+                <img src="/assets/profile_pictures/user_00002.jpg">
+            </div>
+            <% end %>
+        </div>
+        <div id="featured-info" class="flex-between">
+            <div id="featured-hours">
+                <p>Hours Worked:</p>
+                <p><%= User.find(2).hoursWorked %></p>
+            </div>
+            <div id="featured-money">
+                <p>Money Raised:</p>
+                <p>$<%= User.find(2).moneyRaised %></p>
+            </div>
+            <div id="featured-projects">
+                <p>Completed Projects:</p>
+                <p><%= User.find(2).currentProjects.count %></p>
+            </div>
+        </div>
     </div>
-    <div class="right-side-box well">
-        <h3>Featured Business</h3>
+    <div class="right-side-box">
+        <h2>Featured Business</h3>
         <p><strong>DREAM Animal Rescue</strong></p>
         <p>Dream Animal Rescue operates in south Orange County to foster displaced cats until they can find forever homes. Our adoption center is located in Lake Forest just off of El Toro Rd. Visit our website at http://www.dreamanimalrescue.org/ to see our list of adoptable animals, or schedule a visit with one of our kitties!</p>
     </div>

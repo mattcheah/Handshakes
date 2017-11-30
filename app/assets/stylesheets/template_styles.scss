@@ -1,3 +1,5 @@
+
+
 // Main Template Styles
 * {
     box-sizing:border-box;
@@ -12,7 +14,7 @@ body {
 }
 
 #content {
-    width:80%;
+    width:65%;
     margin: 100px auto;
     
 }
@@ -27,15 +29,17 @@ body {
 #nav {
     display:flex;
     height:56px;
-    background-color: black;
+    background-color: $navFooterColor;
     width:100%;
     padding:0 20px;
     
     #nav-logo, #nav-user, #nav-items {
-        color:#32b8c8 !important;
         p {
             font-size:18px;
             font-weight: 700;
+        }
+        a {
+            color:white;
         }
     }
     
@@ -81,7 +85,8 @@ p {
 }
 
 footer {
-    background-color:#617782;
+    color:white;
+    background-color:$navFooterColor;
     padding:20px 60px;
     
 }
@@ -133,4 +138,12 @@ footer {
 
 .clear {
     clear:both;
+}
+.flex-wrap {
+    display:flex;
+    flex-wrap: wrap;
+}
+.flex-between {
+    display:flex;
+    justify-content:space-between;
 }
