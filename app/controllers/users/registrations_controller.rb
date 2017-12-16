@@ -54,12 +54,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = current_user
     skill = Skill.where("name": params[:skill])
     unless skill.length > 0
-      byebug
       Skill.create!({name: params[:skill]})
     end
-    byebug
     unless @user.skills.include?(skill)
-      @user.skills.create(skill) 
+      @user.skills << skill
       byebug
     
       respond_to do |format|

@@ -19,6 +19,17 @@
             padding: 0;
         }
     }
+    .num-users-badge {
+        padding: 5px;
+        background-color: #4a738a;
+        border-radius: 100%;
+        text-align: center;
+        font-size: 10px;
+        bottom: 2px;
+        position: relative;
+        margin-left: 5px;
+        margin-right: -10px;
+    }
 }
 
 .user-next-steps {
