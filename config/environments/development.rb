@@ -55,6 +55,8 @@ Rails.application.configure do
     user_name: ENV["GMAIL_USERNAME"],
     password: ENV["GMAIL_PASSWORD"]
   }
+  
+  config.web_console.whitelisted_ips = '209.234.159.178'
 
   Rails.application.routes.default_url_options[:host] = 'domain.com'
   

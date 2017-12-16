@@ -58,11 +58,22 @@
     </div>
     
     <div class="linebreak"></div>
+    <div id="user-skills-box">
+        <div id="user-skills-box-titles">
+            <h2>Skills</h2>
+            <p>Listed skills for <%= @user.first %>:</p>
+        </div>
+        <%= render :partial => 'partials/skill_badges', locals: {:skills => @skills} %>
+        
+        <div id="skills-form">
+            <h3>Add New Skills</h3>
+            <%= form_with url: users_add_skill_path, id: "skills-form", format: 'json' do |f| %>
+                <%= f.text_field :skill, placeholder: "Submit your skill" %>
+                <%= f.submit "Submit Skill" %>
+            <% end %>
+        </div>
+    </div>
     
-    <h2>Skills</h2>
-    <p>Listed skills for <%= @user.first %>:</p>
-    
-    <%= render :partial => 'partials/skill_badges', locals: {:skills => @skills} %>
     <div class="linebreak"></div>
     
     <h2>Causes</h2>

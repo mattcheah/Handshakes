@@ -52,10 +52,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   def add_skill
     @user = current_user
-    skill = params[:skill]
-    
+    skill = Skill.where("name": params[:skill])
+    unless skill.length > 0
+      byebug
+      Skill.create!({name: params[:skill]})
+    end
+    byebug
     unless @user.skills.include?(skill)
-      @user.skills.push(skill) 
+      @user.skills.create(skill) 
+      byebug
     
       respond_to do |format|
         if @user.save
@@ -73,7 +78,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   def delete_skill
     @user = current_user
-    skill = params[:skill]
+    skill = Skill.find(params[:skill])
     if @user.skills.include?(skill)
       @user.skills.delete(skill)
       respond_to do |format|

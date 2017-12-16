@@ -7,7 +7,17 @@
     color:white;
     form {
         display: inline-block;
-        margin-left:5px;
+        
+        input[type="submit"] {
+            background: none;
+            border: none;
+            color: white;
+            position: relative;
+            bottom: 17px;
+            left: 9px;
+            cursor: pointer;
+            padding: 0;
+        }
     }
 }
 
@@ -17,4 +27,10 @@
         padding: 20px 10px;
         
     }
+}
+
+#user-skills-box-titles {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
