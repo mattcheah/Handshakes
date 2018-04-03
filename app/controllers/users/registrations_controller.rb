@@ -4,6 +4,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :html, except: [:add_skill, :add_cause, :delete_skill]
   respond_to :json, only: [:add_skill, :add_cause, :delete_skill]
   
+  # Use Responders gem to set flash message
+  responders :flash  
 
   # GET /resource/sign_up
   def new
@@ -49,28 +51,40 @@ class Users::RegistrationsController < Devise::RegistrationsController
     respond_with @user.skills
   end
   
+  #POST /users/add_skill
   def add_skill
     @user = current_user
     skill = Skill.where("name": params[:skill])
+
     unless skill.length > 0
-      Skill.create!({name: params[:skill]})
+      skill = Skill.create!({name: params[:skill]})
     end
+    
     unless @user.skills.include?(skill)
       @user.skills << skill
-      byebug
     
       respond_to do |format|
         if @user.save
+          format.html
           format.json { render json: @user.skills, status: :created }
+          format.any(:xml) { render request.format.to_sym => @user.skills }
         else
+          # respond_with(@user.errors)
+          format.html
           format.json { render json: @user.errors, status: :unprocessable_entity }
+          format.any(:xml) { render request.format.to_sym => @user.skills }
         end
       end
     else 
+      byebug
+      # respond_with(@user.skills)
       respond_to do |format|
-        format.json { render json: "This skill exists", errors: "This skill is already added!" }
+         format.html
+          format.json { render json: "This skill exists", errors: "This skill is already added!" }
+          format.any(:xml) { render request.format.to_sym => @user.skills }
       end
     end
+    
   end
   
   def delete_skill

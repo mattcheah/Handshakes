@@ -8,9 +8,9 @@ RSpec.describe Users::RegistrationsController, type: :controller do
             login_user
             
             it "adds the skill to the array of skills" do
-                post :add_skill, {:skill => "new skill"} 
+                post :add_skill, :params => {:skill => "new skill"} 
                 
-                expect(@user.skills[0]).to eq("new skill")
+                expect(@user.skills[0].name).to eq("new skill")
                 expect(@user.skills.count).to eq 1
             end
             
