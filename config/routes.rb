@@ -55,7 +55,7 @@ Rails.application.routes.draw do
   #   end
   
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
-  # devise_for :users, skip: [ :all ]
+
   devise_scope :user do
     get "/users/sign_out" => "devise/sessions#destroy"
     get '/users/next_steps' => 'users/registrations#next_steps'

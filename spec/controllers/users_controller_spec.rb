@@ -54,7 +54,7 @@ RSpec.describe UsersController, type: :controller do
   
     describe "GET #show" do
       it "returns a success response" do
-        get :show, {:id => @user1.id}
+        get :show, :params => {:id => @user1.id}
         expect(response).to be_success
       end
     end

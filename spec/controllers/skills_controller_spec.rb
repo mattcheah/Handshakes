@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe SkillsController, type: :controller do
 
     before(:all) do
-        load "#{Rails.root}/db/seeds.rb"
+        unless Skill.all.length > 0 
+            load "#{Rails.root}/db/seeds.rb"
+        end
     end
   
   describe "skills INDEX" do
