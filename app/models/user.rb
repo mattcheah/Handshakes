@@ -2,11 +2,11 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   
-  has_many :users_causes 
-  has_many :causes, through: :users_causes
+  has_many :user_causes, class_name: UserCauses
+  has_many :causes, through: :user_causes
   
-  has_many :user_skill
-  has_many :skills, through: :user_skill
+  has_many :user_skills, class_name: UserSkills
+  has_many :skills, through: :user_skills
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

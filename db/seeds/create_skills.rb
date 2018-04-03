@@ -67,9 +67,9 @@ end
 
 # Add Skills to users
 (0..5).each do |x|
-    UserSkill.create({user_id: User.first.id, skill_id: Skill.first.id+x})
+    UserSkills.create({user_id: User.first.id, skill_id: Skill.first.id+x})
 end
 
 (5..10).each do |x|
-    UserSkill.create({user_id: User.second.id, skill_id: Skill.first.id+x})
+    UserSkills.create({user_id: User.second.id, skill_id: Skill.first.id+x})
 end
