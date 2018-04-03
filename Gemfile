@@ -33,6 +33,7 @@ group :development, :test do
   gem 'foreman'
   gem 'awesome_print'
   gem 'sqlite3'
+  gem 'mailcatcher'
 end
 
 group :test do 

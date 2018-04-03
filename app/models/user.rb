@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :skills, through: :user_skill
   
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable
          
   serialize :skills, Array
   serialize :currentProjects, Array
