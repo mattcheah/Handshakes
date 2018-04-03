@@ -8,15 +8,15 @@ RSpec.describe Users::RegistrationsController, type: :controller do
             login_user
             
             it "adds the skill to the array of skills" do
-                post :add_skill, :params => {:skill => "new skill"} 
+                post :add_skill, :params => {:skill => "new skill"}, format: :json
                 
                 expect(@user.skills[0].name).to eq("new skill")
                 expect(@user.skills.count).to eq 1
             end
             
             it "does not add a skill if the skill already exists" do
-               @user.skills = ["skill1", "skill2"]
-               post :add_skill, {:skill => "new skill"} 
+               @user.skills = [Skill.find(1), Skill.find(2)]
+               post :add_skill, :params => {:skill => "HTML"}, format: :json
                expect(@user.skills.count).to eq 2
             end
             
@@ -24,7 +24,11 @@ RSpec.describe Users::RegistrationsController, type: :controller do
         
         context "when user is not logged in " do
             it "redirects to the homepage" do
-                post :add_skill, :params => {skill: "new skill"} 
+                # I have to include this even though i don't know what it means. 
+                @request.env["devise.mapping"] = Devise.mappings[:user]
+                
+                post :add_skill, :params => {skill: "new skill"}, format: :json
+                
                 expect(response).to redirect_to(root_path)
             end
         end

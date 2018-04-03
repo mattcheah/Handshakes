@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :authenticate_user, except: [:new, :create]
   respond_to :html, except: [:add_skill, :add_cause, :delete_skill]
   respond_to :json, only: [:add_skill, :add_cause, :delete_skill]
   
@@ -41,7 +42,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   # GET /user/next_steps
   def next_steps
-    authenticate_user
     @user = current_user
     @skills = @user.skills
   end
@@ -53,15 +53,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   #POST /users/add_skill
   def add_skill
+    
     @user = current_user
-    skill = Skill.where("name": params[:skill])
-
-    unless skill.length > 0
+    skill = Skill.where("name": params[:skill]).first
+    
+    unless skill
       skill = Skill.create!({name: params[:skill]})
     end
     
+    # byebug
     unless @user.skills.include?(skill)
+    
+      # byebug
       @user.skills << skill
+      # byebug
     
       respond_to do |format|
         if @user.save
@@ -75,14 +80,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
           format.any(:xml) { render request.format.to_sym => @user.skills }
         end
       end
+      
     else 
-      byebug
+      
       # respond_with(@user.skills)
       respond_to do |format|
          format.html
           format.json { render json: "This skill exists", errors: "This skill is already added!" }
           format.any(:xml) { render request.format.to_sym => @user.skills }
       end
+      
     end
     
   end
@@ -163,7 +170,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def authenticate_user 
     unless user_signed_in?
       flash[:alert] = 'You must be signed in to access this page.'
-      redirect_to root_path
+      redirect_to root_path and return
     end
   end
       

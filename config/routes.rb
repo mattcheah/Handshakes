@@ -54,6 +54,8 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
+  devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
+  # devise_for :users, skip: [ :all ]
   devise_scope :user do
     get "/users/sign_out" => "devise/sessions#destroy"
     get '/users/next_steps' => 'users/registrations#next_steps'
@@ -62,7 +64,6 @@ Rails.application.routes.draw do
     post '/users/add_cause' => 'users/registrations#add_cause', :defaults => { :format => :json }
   end
   
-  devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
 
   resources :users, only: [:index, :show]
   
