@@ -13,29 +13,36 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #POST /resource
   def create
     # super
-    # byebug
+    byebug
     build_resource(sign_up_params)
 
     resource.save
-    # byebug
+    byebug
     yield resource if block_given?
     if resource.persisted?
+      byebug
       if resource.active_for_authentication?
+        byebug
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
-        respond_with resource, location: after_sign_up_path_for(resource)
+        # respond_with resource, location: after_sign_up_path_for(resource)
+        redirect_to users_next_steps_path
       else
+        byebug
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!
-        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+        # respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      redirect_to users_next_steps_path
       end
     else
+      byebug
       clean_up_passwords resource
       set_minimum_password_length
-      respond_with resource
+      redirect_to users_next_steps_path
+      # respond_with resource
     end
+    byebug
     
-    # redirect_to users_next_steps_path
   end
   
   # GET /user/next_steps

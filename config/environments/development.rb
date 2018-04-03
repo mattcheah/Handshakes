@@ -42,7 +42,7 @@ Rails.application.configure do
   
   
   # config set for Devise Authentication in development
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.default_url_options = { host: 'https://handshakes-mattcheah.c9users.io' }
   
   config.action_mailer.delivery_method = :smtp
   
@@ -58,6 +58,6 @@ Rails.application.configure do
   
   config.web_console.whitelisted_ips = '209.234.159.178'
 
-  Rails.application.routes.default_url_options[:host] = 'domain.com'
+  Rails.application.routes.default_url_options[:host] = 'https://handshakes-mattcheah.c9users.io'
   
 end
