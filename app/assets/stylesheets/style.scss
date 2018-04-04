@@ -61,27 +61,6 @@ body.home {
              font-size:2em;
              text-align:center;
          }
-         button {
-            padding: 15px 40px;
-            border-radius: 4px;
-            border: 1px dashed #ffffff;
-            background-color: #258aef;
-            color: white;
-            box-shadow: 0 0 0 4px #258aef;
-            cursor:pointer;
-            font-size:24px;
-         }
-         button:hover {
-             background-color: #185fa7;
-             box-shadow: 0 0 0 4px #185fa7;
-         }
-         button:active {
-             box-shadow: 0 0 0 4px #4688cc, inset 0px 0px 28px #4688cc;
-         }
-         button:focus {
-             outline:0;
-             border: 1px solid #ffffff;
-         }
     }
 }
 
