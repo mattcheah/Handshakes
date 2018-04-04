@@ -34,11 +34,13 @@ group :development, :test do
   gem 'awesome_print'
   gem 'sqlite3'
   gem 'mailcatcher'
+  gem 'nyan-cat-formatter'
 end
 
 group :test do 
   gem 'shoulda-matchers', '~> 3.1'
-  gem 'rails-controller-testing' 
+  gem 'rails-controller-testing'
+  
 end
 
 group :development do

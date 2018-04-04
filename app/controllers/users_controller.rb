@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @skills = @user.skills
+
     # if @user.currentProjects
     #   @user.currentProjects.each do |x|
     #     @projectsCompleted ||= 0
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
     @projectsCompleted ||= 0 
     
   end
-
+  
   # # GET /users/1/edit
   # def edit
   # end

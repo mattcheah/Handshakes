@@ -25,7 +25,7 @@ RSpec.describe CausesController, type: :controller do
   
   describe "causes SHOW" do
     
-    let(:new_cause) { create(:cause, {name: "test cause", category: "test cause"}) }
+    let(:new_cause) { create(:cause, {name: "test cause", category: "test cause", description: "test cause description"}) }
       
     it "returns success" do
         get :show, params: {id: new_cause.id}
@@ -35,8 +35,8 @@ RSpec.describe CausesController, type: :controller do
     it "returns success" do
         get :show, params: {id: new_cause.id}
         
-        expect(assigns(:cause).name).to eq "test show"
-        expect(assigns(:cause).category).to eq "test show"
+        expect(assigns(:cause).name).to eq "test cause"
+        expect(assigns(:cause).category).to eq "test cause"
     end
   end
   

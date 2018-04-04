@@ -63,7 +63,7 @@
             <h2>Skills</h2>
             <p>Listed skills for <%= @user.first %>:</p>
         </div>
-        <%= render :partial => 'partials/skill_badges', locals: {:skills => @skills} %>
+        <%= render :partial => 'partials/skill_badges', locals: {skills: @skills} %>
         
         <div id="skills-form">
             <h3>Add New Skills</h3>
